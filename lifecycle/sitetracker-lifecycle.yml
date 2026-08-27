@@ -1,0 +1,57 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://www.sitetracker.com/ sitemap (542 pages enumerated);
+  live probes of status./release-notes/changelog paths
+note: >-
+  Sitetracker publishes no versioning policy, no deprecation policy, no
+  Sunset/Deprecation header commitment, no SLA page and no status page of its
+  own. status.sitetracker.com does not resolve (NXDOMAIN). Because the product
+  is a Salesforce managed package, the runtime availability signal customers
+  actually watch is Salesforce Trust (status.salesforce.com) — Salesforce's page,
+  not Sitetracker's, so NO `StatusPage` pointer is emitted on Sitetracker's
+  behalf. Likewise the API version in the base URL is the Salesforce Platform API
+  version, governed by Salesforce's own three-year-release deprecation policy,
+  not by anything Sitetracker publishes. Release notes for the managed package
+  exist inside the gated Salesforce Community help center and were not reachable.
+versioning:
+  policy_published: false
+  scheme: >-
+    Inherited — the Salesforce Platform API version segment
+    (/services/data/{version}/), set by Salesforce, not Sitetracker.
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  deprecated_operations: []
+  note: No contract published, so no deprecated operations can be derived.
+sla:
+  published: false
+  note: >-
+    Availability commitments, if any, live in the Master Services Agreement at
+    https://www.sitetracker.com/legal-msa/ and in customer contracts.
+status_page:
+  provider_operated: false
+  probes:
+  - url: https://status.sitetracker.com/
+    status: 0
+    note: DNS NXDOMAIN
+  upstream_dependency: https://status.salesforce.com/
+  upstream_note: >-
+    Salesforce Trust, operated by Salesforce. Recorded as context only; not
+    claimed as a Sitetracker artifact.
+changelog:
+  published: false
+  probes:
+  - url: https://www.sitetracker.com/release-notes/
+    status: 404
+  - url: https://www.sitetracker.com/changelog/
+    status: 404
+  - url: https://www.sitetracker.com/whats-new/
+    status: 404
+  - url: https://www.sitetracker.com/product-updates/
+    status: 404
+  note: >-
+    Managed-package release notes are published to customers inside the gated
+    Salesforce Community help center (help.sitetracker.com), which requires a
+    Salesforce login.

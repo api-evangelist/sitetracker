@@ -1,0 +1,76 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://www.sitetracker.com/products-services/integrations/ (certification claims);
+  https://trust.sitetracker.com/ (Drata-hosted trust center, live but behind a
+  Cloudflare bot challenge); https://www.sitetracker.com/subprocessors/;
+  https://www.sitetracker.com/privacy-policy/
+note: >-
+  Sitetracker publishes no machine-readable contract, so nothing here is derived
+  from a spec — every row is a claim read off a public Sitetracker page, or an
+  observation from a live probe. The platform is a Salesforce managed package,
+  so the transport-level standards it conforms to are Salesforce's, not
+  Sitetracker's own; those rows are marked accordingly.
+standards:
+- id: soc2-type-ii
+  name: SOC 2 Type II
+  conforms: true
+  evidence: >-
+    "Integrations comply with SOC 1 Type II, SOC 2 Type II, ISO 27001, and ISO 27701
+    standards" — https://www.sitetracker.com/products-services/integrations/
+- id: soc1-type-ii
+  name: SOC 1 Type II
+  conforms: true
+  evidence: >-
+    Named on https://www.sitetracker.com/products-services/integrations/
+- id: iso-27001
+  name: ISO/IEC 27001
+  conforms: true
+  evidence: >-
+    Named on https://www.sitetracker.com/products-services/integrations/
+- id: iso-27701
+  name: ISO/IEC 27701
+  conforms: true
+  evidence: >-
+    Named on https://www.sitetracker.com/products-services/integrations/
+- id: oauth2
+  name: OAuth 2.0
+  conforms: true
+  evidence: >-
+    Observed, not claimed. help.sitetracker.com redirects to
+    /oauth2/authorization/salesforce, and community.sitetracker.com redirects to
+    login.salesforce.com/setup/secur/RemoteAccessAuthorizationPage.apexp — the
+    Salesforce OAuth 2.0 connected-app authorization endpoint. Auth is delegated
+    to Salesforce; Sitetracker operates no authorization server of its own.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document served on any Sitetracker host. /openapi.json,
+    /openapi.yaml, /swagger.json and /api-docs return 404 on www.sitetracker.com
+    and the Salesforce login shell on help./community.sitetracker.com.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No event/streaming contract published; no webhook catalog on any public page.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: No error reference published; error semantics inherit from the Salesforce Platform API.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on www.sitetracker.com and the Salesforce
+    login HTML shell on help./community.sitetracker.com.
+domain_standards:
+- id: none-declared
+  name: No domain standard declared in a contract
+  conforms: false
+  evidence: >-
+    REWARD-ONLY check, honestly unmet. Sitetracker's markets (telecom deployment,
+    utilities, EV charging) do carry domain standards, but Sitetracker publishes no
+    contract in which one could be declared — no SCIM URN, OData $metadata, GIS
+    OGC endpoint or similar is exposed on any public host. GeoJSON and KML file
+    support is stated on the platform page as an import/display capability, not as
+    a served interface, so it is not recorded as a conformance.

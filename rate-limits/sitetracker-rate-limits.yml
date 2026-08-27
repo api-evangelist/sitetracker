@@ -1,0 +1,29 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://www.sitetracker.com/products-services/integrations/;
+  https://www.sitetracker.com/page-sitemap.xml; live probes of every
+  Sitetracker host
+note: >-
+  Sitetracker publishes no rate limits. It states that its objects are reachable
+  over "REST, SOAP, Bulk, and other APIs" but names no limit, no window, no burst
+  and no response header anywhere on its public site, and its API reference is
+  not public. Because the platform is a Salesforce managed package with no
+  Sitetracker-operated API host, the limits that actually bind a caller are the
+  Salesforce org's API request allocations and concurrent-request limits, and the
+  runtime signal is the Salesforce `Sforce-Limit-Info` response header — all of
+  which are Salesforce's to publish, not Sitetracker's. Nothing here is claimed on
+  Sitetracker's behalf. Honest zero.
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status_code: null
+upstream_note: >-
+  Callers are governed by their own Salesforce org limits (24-hour API request
+  allocation, concurrent long-running request cap) and observe them via
+  Sforce-Limit-Info. Documented by Salesforce, not by Sitetracker.
+evidence:
+- url: https://www.sitetracker.com/products-services/integrations/
+  status: 200
+- url: https://www.sitetracker.com/pricing/
+  status: 404

@@ -1,0 +1,21 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  Web search for a Sitetracker MCP server; github.com/sitetracker (0 public
+  repos); npm registry search; live probes of every Sitetracker host
+note: >-
+  No Sitetracker MCP server exists — hosted or local. The GitHub organization
+  publishes zero public repositories, npm carries only two internal ESLint
+  plugins, and no /mcp endpoint or MCP reference appears on any Sitetracker
+  property. No candidate tool list is derived either: there is no OpenAPI to
+  derive one from, and inventing tool names for a Salesforce managed package
+  would be fabrication. No `MCPServer` pointer is emitted.
+status: none-found
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []

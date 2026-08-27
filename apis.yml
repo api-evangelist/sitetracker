@@ -1,23 +1,137 @@
 aid: sitetracker
 name: Sitetracker
-description: 'Sitetracker is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Sitetracker is a global software company whose deployment operations
+  management platform is built natively on Salesforce, used to plan, build, operate
+  and maintain critical infrastructure at scale — fiber and wireless networks, towers,
+  data centers, space and satellite, utilities, renewable energy, battery storage
+  and EV charging. The product set spans Project Management, Financial Management,
+  Agreement Management, Field Work Management, Site & Asset Management, Reporting
+  & Analytics, Sitetracker GIS Link, Sitetracker Mobile and the Scout AI assistant.
+  Because the platform is a Salesforce managed package, its programmable surface is
+  the Salesforce Platform API — Sitetracker states that its standard and custom objects
+  are API-ready and reachable over REST, SOAP and Bulk APIs, called against each customer''s
+  own Salesforce org rather than a Sitetracker-operated API host. Sitetracker publishes
+  no public developer portal, API reference or machine-readable contract; the object
+  and integration documentation sits behind a Salesforce Community login.'
+image: https://www.sitetracker.com/wp-content/uploads/2022/06/Sitetracker-Logo-Approved-2022_rgb-fullcolor.svg
 url: https://raw.githubusercontent.com/api-evangelist/sitetracker/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-27'
 modified: '2026-08-27'
 tags:
 - Company
-apis: []
+- Telecommunications
+- Utilities
+- Energy
+- EV Charging
+- Fiber Networks
+- Asset Management
+- Project Management
+- Field Service
+- Salesforce
+- Critical Infrastructure
+apis:
+- name: Sitetracker Platform API
+  description: 'Sitetracker''s programmable surface is the Salesforce Platform API
+    over the Sitetracker managed package''s standard and custom objects. Sitetracker
+    states: "You can build apps, automations, and integrations using REST, SOAP, Bulk,
+    and other APIs—with full support for custom and standard objects" and "Sitetracker
+    objects are API-ready and work seamlessly with standard Salesforce connectors and
+    tools." There is no Sitetracker-operated API host: calls are made against the customer''s
+    own Salesforce org domain, so the base URL is templated per tenant. Sitetracker
+    publishes no OpenAPI, no public API reference and no developer portal.'
+  humanURL: https://www.sitetracker.com/products-services/integrations/
+  baseURL: https://{myDomain}.my.salesforce.com/services/data/{version}/
+  tags:
+  - Asset Management
+  - Project Management
+  - Salesforce
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://www.sitetracker.com/products-services/integrations/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/sitetracker-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/sitetracker_stock/
+  url: https://www.sitetracker.com/
+- type: Blog
+  url: https://www.sitetracker.com/knowledge-center/
+- type: BlogRSS
+  url: https://www.sitetracker.com/feed/
+- type: Support
+  url: https://www.sitetracker.com/company/contact/
+- type: HelpCenter
+  url: https://help.sitetracker.com/
+- type: Login
+  url: https://sitetracker-login.cloudforce.com/
+- type: GitHubOrganization
+  url: https://github.com/sitetracker
+- type: TermsOfService
+  url: https://www.sitetracker.com/terms-conditions/
+- type: PrivacyPolicy
+  url: https://www.sitetracker.com/privacy-policy/
+- type: Trust
+  url: https://trust.sitetracker.com/
+- type: Marketplace
+  url: https://appexchange.salesforce.com/appxListingDetail?listingId=a0N3A00000DvOROUA3
+- type: Packages
+  url: packages/sitetracker-packages.yml
+- type: Conformance
+  url: conformance/sitetracker-conformance.yml
+- type: Compliance
+  url: conformance/sitetracker-conformance.yml
+- type: TrustCenter
+  url: security/sitetracker-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/sitetracker-vulnerability-disclosure.yml
+- type: Authentication
+  url: authentication/sitetracker-authentication.yml
+- type: Lifecycle
+  url: lifecycle/sitetracker-lifecycle.yml
+- type: Plans
+  url: plans/sitetracker-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sitetracker-rate-limits.yml
+- type: LLMsTxt
+  url: llms/sitetracker-llms.txt
+x-enrichment:
+  date: '2026-08-27'
+  status: minimal
+  artifacts_added: 12
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Sitetracker markets REST, SOAP and Bulk APIs over its Salesforce managed
+    package but operates no API host of its own and publishes no reference —
+    both help.sitetracker.com and community.sitetracker.com hand every request,
+    including every /.well-known path, to a Salesforce Customer Secure Login
+    page, so the object model and integration guide are readable only inside an
+    existing customer tenant.
+  evidence:
+  - url: https://community.sitetracker.com/
+    status: 200
+    note: >-
+      302s to login.salesforce.com/setup/secur/RemoteAccessAuthorizationPage.apexp
+      — the Salesforce OAuth connected-app login.
+  - url: https://help.sitetracker.com/
+    status: 200
+    note: Serves a login page whose only action is /oauth2/authorization/salesforce.
+  - url: https://help.sitetracker.com/openapi.json
+    status: 200
+    note: Salesforce login HTML shell, not a spec — catch-all false positive.
+  - url: https://www.sitetracker.com/openapi.json
+    status: 404
+  - url: https://api.sitetracker.com/
+    status: 0
+    note: DNS NXDOMAIN — no Sitetracker-operated API host exists.
+  checked: '2026-08-27'

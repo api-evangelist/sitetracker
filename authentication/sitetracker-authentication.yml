@@ -1,0 +1,50 @@
+generated: '2026-08-27'
+method: probed
+source: >-
+  Observed redirect chains on https://help.sitetracker.com/ and
+  https://community.sitetracker.com/; https://sitetracker-login.cloudforce.com/;
+  https://www.sitetracker.com/products-services/integrations/
+note: >-
+  DERIVED FROM NOTHING WOULD BE A GUESS — this profile is built from what the
+  live hosts actually did, not from a spec (Sitetracker publishes none) and not
+  from an auth docs page (Sitetracker publishes none publicly). Sitetracker
+  operates no authorization server of its own: authentication is delegated
+  wholly to Salesforce. Every Sitetracker property that requires a credential
+  hands off to a Salesforce OAuth 2.0 connected-app flow, and the customer's API
+  credentials are Salesforce org credentials, not Sitetracker-issued ones. The
+  scope reference, token lifetimes and connected-app configuration are therefore
+  Salesforce's, and the Sitetracker-specific object permissions sit behind the
+  customer login. No `scopes/` artifact is written: Sitetracker documents no
+  scope surface of its own.
+delegated_to: Salesforce
+authorization_server_operated_by_provider: false
+schemes:
+- id: salesforce-oauth2
+  type: oauth2
+  name: Salesforce OAuth 2.0 (connected app)
+  observed: true
+  evidence: >-
+    https://community.sitetracker.com/ 302s to
+    https://login.salesforce.com/setup/secur/RemoteAccessAuthorizationPage.apexp —
+    the Salesforce OAuth connected-app authorization page.
+  flows_documented_by: https://help.salesforce.com/ (Salesforce, not Sitetracker)
+- id: salesforce-oauth2-app
+  type: oauth2
+  name: Salesforce OAuth 2.0 (Sitetracker EDU application)
+  observed: true
+  evidence: >-
+    https://help.sitetracker.com/ serves a login page whose only action is
+    GET /oauth2/authorization/salesforce.
+- id: salesforce-session
+  type: http
+  scheme: session
+  name: Salesforce session ID / My Domain login
+  observed: true
+  evidence: >-
+    https://sitetracker-login.cloudforce.com/ (HTTP 200) is the customer-facing
+    Salesforce My Domain login linked from the sitetracker.com header.
+public_auth_documentation: false
+public_auth_documentation_note: >-
+  Sitetracker publishes no public authentication guide. The integrations page
+  states the APIs are the Salesforce REST/SOAP/Bulk APIs but links no auth
+  reference of its own.

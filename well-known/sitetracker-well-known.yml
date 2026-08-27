@@ -1,0 +1,120 @@
+generated: '2026-08-27'
+method: probed
+source: live GET of /.well-known/* on every Sitetracker host discovered in apis.yml
+note: >-
+  No Sitetracker host serves a real /.well-known document. www.sitetracker.com (a
+  WordPress marketing site on Pantheon) returns a clean 404 for every path.
+  help.sitetracker.com and community.sitetracker.com return HTTP 200 for EVERY
+  /.well-known path, but the body in each case is the Salesforce Customer Secure
+  Login Page HTML ("Salesforce Customer Secure Login Page. Login to your Salesforce
+  Customer Account.") — a catch-all SPA shell, not a document. Those 200s are
+  recorded as misses. trust.sitetracker.com (a Drata-hosted trust center) returns
+  403 with `cf-mitigated: challenge` on every path — a Cloudflare bot challenge,
+  not an absence, so those probes are inconclusive rather than negative.
+  No WellKnown or SecurityTxt pointer is emitted: nothing was actually served.
+hosts:
+- host: www.sitetracker.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: help.sitetracker.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document — catch-all false positive
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell — rejected, not an AgentCard
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell — rejected, not an AgentCard
+- host: community.sitetracker.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document — catch-all false positive
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell, not a document
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell — rejected, not an AgentCard
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: HTML Salesforce login shell — rejected, not an AgentCard
+- host: trust.sitetracker.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+    note: Cloudflare bot challenge (cf-mitigated:challenge) — inconclusive
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+    note: Cloudflare bot challenge (cf-mitigated:challenge) — inconclusive
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+    note: Cloudflare bot challenge (cf-mitigated:challenge) — inconclusive

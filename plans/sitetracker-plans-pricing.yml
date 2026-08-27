@@ -1,0 +1,23 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://www.sitetracker.com/page-sitemap.xml (542 pages, no pricing page);
+  https://www.sitetracker.com/pricing/ -> 404;
+  https://www.sitetracker.com/demo/ (the only commercial entry point)
+note: >-
+  Sitetracker publishes NO pricing. There is no /pricing page — the path 404s and
+  no pricing, plans or packaging page appears anywhere in the site's own 542-page
+  sitemap. The sole commercial call to action is a demo request form at
+  /demo/ routed through /company/contact/. This is an enterprise
+  contact-sales motion; list price, tiers, quotas and overages are all unpublished.
+  Recorded as an honest zero, not an omission.
+plan_count: 0
+pricing_model: contact-sales
+plans: []
+evidence:
+- url: https://www.sitetracker.com/pricing/
+  status: 404
+- url: https://www.sitetracker.com/demo/
+  status: 200
+- url: https://www.sitetracker.com/company/contact/
+  status: 200

@@ -1,0 +1,62 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  registry.npmjs.org search + package metadata; PyPI, RubyGems, crates.io,
+  pkg.go.dev, Maven Central, NuGet and Packagist searched with no first-party
+  result; github.com/sitetracker enumerated (0 public repositories)
+note: >-
+  Sitetracker publishes NO API client SDK in any public registry. The only
+  first-party packages found are two internal Salesforce/LWC development
+  lint-rule plugins, published under the Sitetracker author name from
+  nzozaya@sitetracker.com and pointing at github.com/sitetracker/strk-core
+  (a repository that is not public — the sitetracker GitHub org exposes zero
+  public repos). They are developer tooling for building ON the platform, not
+  clients FOR an API, so no `SDKs` pointer is emitted. Both are stuck at 1.0.0
+  from 2025-06-30 with no subsequent release.
+packages:
+- name: eslint-plugin-strk
+  registry: npm
+  url: https://www.npmjs.com/package/eslint-plugin-strk
+  official: true
+  official_basis: >-
+    author "Sitetracker"; maintainer nzozaya@sitetracker.com; repository
+    github.com/sitetracker/strk-core
+  kind: lint-rules
+  is_api_sdk: false
+  language: javascript
+  license: ISC
+  description: Custom ESLint rules for Sitetracker development standards and best practices
+  version: 1.0.0
+  published: '2025-06-30'
+- name: strk-linter
+  registry: npm
+  url: https://www.npmjs.com/package/strk-linter
+  official: true
+  official_basis: >-
+    author "Sitetracker"; maintainer nzozaya@sitetracker.com; repository
+    github.com/sitetracker/strk-core
+  kind: lint-rules
+  is_api_sdk: false
+  language: javascript
+  license: ISC
+  description: Custom ESLint rules for Sitetracker development standards and best practices
+  version: 1.0.0
+  published: '2025-06-30'
+registries_checked:
+- registry: npm
+  result: 2 first-party packages (neither an API SDK)
+- registry: pypi
+  result: no first-party package (pypi.org/pypi/sitetracker/json -> 404)
+- registry: rubygems
+  result: no first-party package (search returned [])
+- registry: crates.io
+  result: no first-party package
+- registry: maven-central
+  result: no first-party package
+- registry: nuget
+  result: no first-party package
+- registry: packagist
+  result: no first-party package
+- registry: pkg.go.dev
+  result: no first-party package
+sdk_count: 0

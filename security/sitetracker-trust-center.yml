@@ -1,0 +1,54 @@
+generated: '2026-08-27'
+method: searched
+source: >-
+  https://www.sitetracker.com/legal/ (links the trust center);
+  https://trust.sitetracker.com/ (live, Cloudflare bot challenge);
+  https://www.sitetracker.com/products-services/integrations/ (certification names)
+note: >-
+  Sitetracker runs a real, dedicated trust center. It is hosted by Drata
+  (trust.sitetracker.com CNAMEs to trust.cname.drata.com) and is linked from
+  https://www.sitetracker.com/legal/ and https://www.sitetracker.com/trust/,
+  which 302s to it. Our probe could not read the page body: every request
+  returns HTTP 403 with `cf-mitigated: challenge`, a Cloudflare bot challenge —
+  the page demonstrably exists and only our crawler was turned away, so this is
+  recorded as present-but-unread, not as absent. The certifications below are
+  therefore taken from Sitetracker's own public integrations page rather than
+  from the trust center itself.
+trust_center:
+  url: https://trust.sitetracker.com/
+  platform: Drata
+  platform_evidence: 'DNS: trust.sitetracker.com CNAME trust.cname.drata.com'
+  linked_from:
+  - https://www.sitetracker.com/legal/
+  - https://www.sitetracker.com/trust/
+  reachable: false
+  http_status: 403
+  unreadable_reason: "Cloudflare bot challenge (cf-mitigated: challenge)"
+certifications:
+- name: SOC 1 Type II
+  source: https://www.sitetracker.com/products-services/integrations/
+- name: SOC 2 Type II
+  source: https://www.sitetracker.com/products-services/integrations/
+- name: ISO/IEC 27001
+  source: https://www.sitetracker.com/products-services/integrations/
+- name: ISO/IEC 27701
+  source: https://www.sitetracker.com/products-services/integrations/
+related_documents:
+- name: Subprocessors
+  url: https://www.sitetracker.com/subprocessors/
+  status: 200
+- name: Privacy Policy
+  url: https://www.sitetracker.com/privacy-policy/
+  status: 200
+- name: Master Services Agreement
+  url: https://www.sitetracker.com/legal-msa/
+  status: 200
+evidence:
+- url: https://trust.sitetracker.com/
+  status: 403
+- url: https://www.sitetracker.com/trust/
+  status: 403
+- url: https://www.sitetracker.com/legal/
+  status: 200
+- url: https://www.sitetracker.com/products-services/integrations/
+  status: 200
