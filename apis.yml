@@ -26,6 +26,8 @@ deliveryModel:
   method: derived
 image: https://www.sitetracker.com/wp-content/uploads/2022/06/Sitetracker-Logo-Approved-2022_rgb-fullcolor.svg
 url: https://raw.githubusercontent.com/api-evangelist/sitetracker/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
 x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.20'
