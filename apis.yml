@@ -13,6 +13,17 @@ description: 'Sitetracker is a global software company whose deployment operatio
   own Salesforce org rather than a Sitetracker-operated API host. Sitetracker publishes
   no public developer portal, API reference or machine-readable contract; the object
   and integration documentation sits behind a Salesforce Community login.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.sitetracker.com/wp-content/uploads/2022/06/Sitetracker-Logo-Approved-2022_rgb-fullcolor.svg
 url: https://raw.githubusercontent.com/api-evangelist/sitetracker/refs/heads/main/apis.yml
 x-type: company
